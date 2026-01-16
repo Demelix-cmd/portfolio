@@ -13,7 +13,7 @@ function Contact() {
           transition={{ delay: 0.2 }}
           className="text-gray-600 mb-12"
         >
-          Intéressé par mon profil ou un projet ?  
+          Intéressé par mon profil ou un projet ?
           N’hésite pas à me contacter 👇
         </motion.p>
 
@@ -35,18 +35,18 @@ function Contact() {
           </motion.a>
 
           {/* WHATSAPP */}
-          <motion.div
+          <motion.a
+            href="https://wa.me/221775538001?text=Salut%20Saïd%2C%20je%20viens%20de%20voir%20ton%20portfolio"
+            target="_blank"
             whileHover={{ scale: 1.05 }}
-            className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
+            className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block"
           >
-            <a href="https://wa.me/221775538001?text=Salut%20Saïd%2C%20je%20viens%20de%20voir%20ton%20portfolio" target="_blank">
             <p className="text-2xl mb-2">📱</p>
             <p className="font-medium">WhatsApp</p>
             <p className="text-gray-600 text-sm mt-1">
-             a +221 77 553 80 01
+              +221 77 553 80 01
             </p>
-            </a>
-          </motion.div>
+          </motion.a>
 
           {/* GITHUB */}
           <motion.a
