@@ -5,7 +5,7 @@ import Skills from "./components/Skills"
 import Projects from "./components/Projects"
 import Maintenance from "./components/Maintenance"
 import Contact from "./components/Contact"
-import Formulaire from "./components/formulaire"
+import Formulaire from "./components/Formulaire"
 
 function App() {
   return (
