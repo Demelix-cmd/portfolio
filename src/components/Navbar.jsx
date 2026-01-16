@@ -1,6 +1,9 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 
 function Navbar() {
+  const [open, setOpen] = useState(false)
+
   const navItems = [
     { name: "À propos", link: "#about" },
     { name: "Compétences", link: "#skills" },
@@ -12,45 +15,61 @@ function Navbar() {
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur shadow-sm"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
 
         {/* LOGO */}
-        <motion.h1
-          whileHover={{ scale: 1.05 }}
-          className="text-xl font-bold text-blue-600 cursor-pointer"
-        >
+        <h1 className="text-xl font-bold text-blue-600">
           Saïd Deme
-        </motion.h1>
+        </h1>
 
-        {/* LINKS */}
-        <ul className="flex gap-8 text-gray-700 font-medium">
-          {navItems.map((item, index) => (
-            <motion.li
-              key={item.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-            >
-              <motion.a
-                href={item.link}
-                whileHover={{ scale: 1.1 }}
-                className="relative"
-              >
+        {/* DESKTOP LINKS */}
+        <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <a href={item.link} className="hover:text-blue-600">
                 {item.name}
-                {/* underline animé */}
-                <motion.span
-                  layoutId="underline"
-                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-600 origin-left scale-x-0 hover:scale-x-100 transition-transform"
-                />
-              </motion.a>
-            </motion.li>
+              </a>
+            </li>
           ))}
         </ul>
 
+        {/* MOBILE BUTTON */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setOpen(!open)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden bg-white shadow-md"
+          >
+            <ul className="flex flex-col gap-4 p-6 text-gray-700 font-medium">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.link}
+                    onClick={() => setOpen(false)}
+                    className="block"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
