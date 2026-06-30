@@ -37,7 +37,7 @@ function About() {
           variants={item}
           className="text-gray-700 leading-relaxed"
         >
-          Je suis étudiant en Licence 2 de génie informatique, orienté vers la
+          Je suis étudiant en Licence 3 de génie informatique et Galsen AI Ambassador, orienté vers la
           pratique. J'aime analyser des problèmes réels et proposer des
           solutions techniques adaptées — que ce soit en développement web,
           intelligence artificielle ou maintenance informatique. Mon objectif
