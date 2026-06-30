@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
+const isGitHubPages = process.env.GITHUB_ACTIONS || process.env.GITHUB_PAGES
+
 export default defineConfig({
   plugins: [
     react({
@@ -11,5 +13,5 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  base: "/portfolio/",
+  base: isGitHubPages ? "/portfolio/" : "/",
 })
